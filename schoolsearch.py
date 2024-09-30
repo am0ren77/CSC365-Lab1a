@@ -47,12 +47,19 @@ def main():
 
 
     while True:
-	command = input("Enter command: ")
+	command = input("Enter command: ").strip()
 	
 	if command.startswith('Q'):
             print("Quitting program.")
             break
 
+	parts = command.split()
+	main_command = parts[0]
+
+	if command.startswith('S'):
+	  if len(parts) > 1:
+              last_name = parts[1]
+              find_by_last_name(last_name)  
 
 
 
