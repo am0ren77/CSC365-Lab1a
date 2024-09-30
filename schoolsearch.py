@@ -1,7 +1,7 @@
-# Ashley Moreno
+# Ashley Moreino
 # Lab 1 Part a
 # schoolsearch.py
-
+import sys
 students = list()
 
 # Function to read students.txt file and store student data
@@ -10,6 +10,8 @@ def read_students(filename):
     with open(filename, 'r') as file:
         for line in file:
 	    data = line.strip().split(',')
+	    if len(data) != 8:
+		sys.exit(1)
 
 	    student_info = [
 		data[0],		# StLastName
@@ -112,7 +114,8 @@ def main():
     read_students(filename)
 
     while True:
-	command = input("Enter command: ").strip()
+	command = input("Enter command: ")
+	command = command.strip() ## Failure unless quotations ' ' around command
 	
 	if command.startswith('Q'):
             break
@@ -144,8 +147,6 @@ def main():
                       find_highest_gpa_in_grade(grade)
                    elif option.startswith('L'):
                       find_lowest_gpa_in_grade(grade)
-		   else:
-		      print("Unknown option.")
 
 	elif command.startswith('B'):
 	  if len(parts) > 1:
