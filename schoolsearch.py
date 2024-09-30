@@ -40,11 +40,22 @@ def find_by_last_name(last_name):
     else:
         print("No students found with last name: " + last_name)
 
+# R5. S[tudent]: <lastname> B[us]
+# Function to search for a student by last name and print the last name, first name, and bus route
+def find_by_last_name_bus(last_name):
+    results = [student for student in students if student[0] == last_name]
+    if results:
+	for student in results:
+	    print(student[0] + " " + student[1] + " - BUS ROUTE " + str(student[4]))
+    else:
+	print("No students found with last name: " + last_name)
+
+
+
 # Main loop to handle user input
 def main():
     filename = "students.txt"
     read_students(filename)
-
 
     while True:
 	command = input("Enter command: ").strip()
@@ -59,8 +70,10 @@ def main():
 	if command.startswith('S'):
 	  if len(parts) > 1:
               last_name = parts[1]
-              find_by_last_name(last_name)  
-
+	      if len(parts) > 2 and parts[2] == 'B':
+                  find_by_last_name_bus(last_name) 
+	      else:
+		  find_by_last_name(last_name) 
 
 
 if __name__ == "__main__":
