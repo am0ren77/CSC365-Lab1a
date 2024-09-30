@@ -51,6 +51,15 @@ def find_by_last_name_bus(last_name):
 	print("No students found with last name: " + last_name)
 
 
+# R6. T[eacher]: <lastname>
+def find_by_tlast_name(tlast_name):
+    results = [student for student in students if student[6] == tlast_name]
+    if results:
+	for student in results:
+	    print(student[0] + " " + student[1])
+    else:
+	print("No students found for teacher with last name: " + tlast_name)
+
 
 # Main loop to handle user input
 def main():
@@ -70,10 +79,15 @@ def main():
 	if command.startswith('S'):
 	  if len(parts) > 1:
               last_name = parts[1]
-	      if len(parts) > 2 and parts[2] == 'B':
+	      if len(parts) > 2 and parts[2].startswith('B'):
                   find_by_last_name_bus(last_name) 
 	      else:
 		  find_by_last_name(last_name) 
+
+	elif command.startswith('T'):
+	  if len(parts) > 1:
+                tlast_name = parts[1]
+                find_by_tlast_name(tlast_name)	
 
 
 if __name__ == "__main__":
