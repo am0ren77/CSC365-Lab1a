@@ -60,8 +60,16 @@ def find_by_tlast_name(tlast_name):
     else:
 	print("No students found for teacher with last name: " + tlast_name)
 
+# R7. G[rade]: <Number>
+def find_by_grade(grade):
+    results = [student for student in students if student[2] == grade]
+    if results:
+        for student in results:
+            print(student[0] + " " + student[1])   
+    else:
+        print("No students found in grade.")
 
-# Main loop to handle user input
+
 def main():
     filename = "students.txt"
     read_students(filename)
@@ -89,6 +97,10 @@ def main():
                 tlast_name = parts[1]
                 find_by_tlast_name(tlast_name)	
 
+	elif command.startswith('G'):
+	  if len(parts) > 1:
+		grade = int(parts[1])
+		find_by_grade(grade)
 
 if __name__ == "__main__":
     main()
