@@ -28,22 +28,22 @@ def find_by_last_name(last_name):
     results = [student for student in students if student[0] == last_name]
     if results:
         for student in results:
-	    print({
-                    'last_name': student[0],
-                    'first_name': student[1],
-                    'grade': student[2],
-                    'class_room': student[3],
-                    'teacher': student[7] + " " + student[6]
-                })
+	    print(student[0] + " " +
+                  student[1] + " " +
+                  student[2] + " " +
+                  student[3] + " " +
+                  student[7] + " " + student[6]
+                )
     else:
         print("No students found with last name: " + last_name)
+
 
 # R5. S[tudent]: <lastname> B[us]
 def find_by_last_name_bus(last_name):
     results = [student for student in students if student[0] == last_name]
     if results:
 	for student in results:
-	    print(student[0] + " " + student[1] + " - BUS ROUTE " + str(student[4]))
+	    print(student[0] + " " + student[1] + " " + str(student[4]))
     else:
 	print("No students found with last name: " + last_name)
 
@@ -57,6 +57,7 @@ def find_by_tlast_name(tlast_name):
     else:
 	print("No students found for teacher with last name: " + tlast_name)
 
+
 # R7. G[rade]: <Number>
 def find_by_grade(grade):
     results = [student for student in students if student[2] == grade]
@@ -65,6 +66,7 @@ def find_by_grade(grade):
             print(student[0] + " " + student[1])   
     else:
         print("No students found in grade.")
+
 
 # R8. B[us]: <Number>
 def find_by_bus(bus_route):
@@ -75,8 +77,30 @@ def find_by_bus(bus_route):
     else:
         print("No students found for bus route.")
 
-# R9. G[rade]: <Number> H[igh] or G[rade]: <Number> L[ow]
 
+# R9a. G[rade]: <Number> H[igh]
+def find_highest_gpa_in_grade(grade):
+    results = [student for student in students if student[2] == grade]
+    if results:
+        highest_gpa_student = max(results, key=lambda student: student[5])
+        print(str(highest_gpa_student[0]) + " " + 
+              str(highest_gpa_student[1]) + " " +
+              str(highest_gpa_student[5]) + " " +
+              str(highest_gpa_student[7]) + " " +
+	      str(highest_gpa_student[6]) + " " +
+              str(highest_gpa_student[4]))
+
+# R9b. G[rade]: <Number> L[ow]
+def find_lowest_gpa_in_grade(grade):
+    results = [student for student in students if student[2] == grade]
+    if results:
+	lowest_gpa_student = min(results, key=lambda student: student[5])
+	print(str(lowest_gpa_student[0]) + " " +
+	      str(lowest_gpa_student[1]) + " " +
+              str(lowest_gpa_student[5]) + " " +
+              str(lowest_gpa_student[7]) + " " +
+	      str(lowest_gpa_student[6]) + " " +
+              str(lowest_gpa_student[4]))
 
 # R10. A[verage]: <Number>
 
@@ -114,12 +138,22 @@ def main():
 	elif command.startswith('G'):
 	  if len(parts) > 1:
 		grade = int(parts[1])
-		find_by_grade(grade)
+		if len(parts) == 2:	
+	       	   find_by_grade(grade)
+		elif len(parts) > 2:
+                   option = parts[2]
+                   if option == 'H':
+                      find_highest_gpa_in_grade(grade)
+                   elif option == 'L':
+                      find_lowest_gpa_in_grade(grade)
+		   else:
+		      print("Unknown option.")
 
 	elif command.startswith('B'):
 	  if len(parts) > 1:
 		bus_route = int(parts[1])
 		find_by_bus(bus_route)
+	  
 
 
 if __name__ == "__main__":
