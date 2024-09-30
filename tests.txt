@@ -7,7 +7,7 @@
 // TC-1
 // Tests Requirements R3, R4
 // long form command name, existing student
-// expected output: COOKUS XUAN 3 107 52 3.07 FAFARD ROCIO
+// expected output: COOKUS XUAN 3 107 FAFARD ROCIO
 Student: COOKUS
 
 // TC-2
