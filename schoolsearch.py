@@ -34,8 +34,6 @@ def find_by_last_name(last_name):
                   student[3] + " " +
                   student[7] + " " + student[6]
                 )
-    else:
-        print("No students found with last name: " + last_name)
 
 # R5. S[tudent]: <lastname> B[us]
 def find_by_last_name_bus(last_name):
@@ -43,8 +41,6 @@ def find_by_last_name_bus(last_name):
     if results:
 	for student in results:
 	    print(student[0] + " " + student[1] + " " + str(student[4]))
-    else:
-	print("No students found with last name: " + last_name)
 
 # R6. T[eacher]: <lastname>
 def find_by_tlast_name(tlast_name):
@@ -52,17 +48,13 @@ def find_by_tlast_name(tlast_name):
     if results:
 	for student in results:
 	    print(student[0] + " " + student[1])
-    else:
-	print("No students found for teacher with last name: " + tlast_name)
 
 # R7. G[rade]: <Number>
 def find_by_grade(grade):
     results = [student for student in students if student[2] == grade]
     if results:
         for student in results:
-            print(student[0] + " " + student[1])   
-    else:
-        print("No students found in grade.")
+            print(student[0] + " " + student[1])
 
 # R8. B[us]: <Number>
 def find_by_bus(bus_route):
@@ -70,8 +62,6 @@ def find_by_bus(bus_route):
     if results:
         for student in results:
             print(student[0] + " " + student[1] + " " + str(student[2]) + " " + str(student[3]))
-    else:
-        print("No students found for bus route.")
 
 # R9a. G[rade]: <Number> H[igh]
 def find_highest_gpa_in_grade(grade):
@@ -124,7 +114,6 @@ def main():
 	command = input("Enter command: ").strip()
 	
 	if command.startswith('Q'):
-            print("Quitting program.")
             break
 
 	parts = command.split()
@@ -137,7 +126,7 @@ def main():
                   find_by_last_name_bus(last_name) 
 	      else:
 		  find_by_last_name(last_name) 
-
+        
 	elif command.startswith('T'):
 	  if len(parts) > 1:
                 tlast_name = parts[1]
