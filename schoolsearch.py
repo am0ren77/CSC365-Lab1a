@@ -102,6 +102,7 @@ def find_lowest_gpa_in_grade(grade):
 	      str(lowest_gpa_student[6]) + " " +
               str(lowest_gpa_student[4]))
 
+
 # R10. A[verage]: <Number>
 def avg_gpa_score(grade):
     results = [student for student in students if student[2] == grade]
@@ -110,7 +111,16 @@ def avg_gpa_score(grade):
 	average_gpa = total_gpa / len(results)
 	print(str(grade) + " " + str(round(average_gpa, 2)))
 
+
 # R11. I[nfo]
+def student_info():
+    grade_counts = {grade: 0 for grade in range(7)}
+    for student in students:
+	grade = student[2] 
+	if grade in grade_counts:
+	    grade_counts[grade] += 1
+    for grade in sorted(grade_counts):
+	print(str(grade) + ": " + str(grade_counts[grade]) + " students")
 
 
 def main():
@@ -164,6 +174,8 @@ def main():
 		grade = int(parts[1])
 		avg_gpa_score(grade)
 
+	elif command.startswith('I'):
+	  student_info()
 
 if __name__ == "__main__":
     main()
