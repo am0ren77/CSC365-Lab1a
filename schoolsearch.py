@@ -5,7 +5,6 @@
 students = list()
 
 # Function to read students.txt file and store student data
-
 def read_students(filename):
     global students
     with open(filename, 'r') as file:
@@ -25,7 +24,6 @@ def read_students(filename):
 	    students.append(student_info)
 
 # R4. S[tudent]: <lastname>
-# Function to search for a student by last name and print the required details
 def find_by_last_name(last_name):
     results = [student for student in students if student[0] == last_name]
     if results:
@@ -41,7 +39,6 @@ def find_by_last_name(last_name):
         print("No students found with last name: " + last_name)
 
 # R5. S[tudent]: <lastname> B[us]
-# Function to search for a student by last name and print the last name, first name, and bus route
 def find_by_last_name_bus(last_name):
     results = [student for student in students if student[0] == last_name]
     if results:
@@ -68,6 +65,23 @@ def find_by_grade(grade):
             print(student[0] + " " + student[1])   
     else:
         print("No students found in grade.")
+
+# R8. B[us]: <Number>
+def find_by_bus(bus_route):
+    results = [student for student in students if student[4] == bus_route]
+    if results:
+        for student in results:
+            print(student[0] + " " + student[1] + " " + str(student[2]) + " " + str(student[3]))
+    else:
+        print("No students found for bus route.")
+
+# R9. G[rade]: <Number> H[igh] or G[rade]: <Number> L[ow]
+
+
+# R10. A[verage]: <Number>
+
+
+# R11. I[nfo]
 
 
 def main():
@@ -101,6 +115,12 @@ def main():
 	  if len(parts) > 1:
 		grade = int(parts[1])
 		find_by_grade(grade)
+
+	elif command.startswith('B'):
+	  if len(parts) > 1:
+		bus_route = int(parts[1])
+		find_by_bus(bus_route)
+
 
 if __name__ == "__main__":
     main()
