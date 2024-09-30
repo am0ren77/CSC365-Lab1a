@@ -75,7 +75,8 @@ def main():
 	elif command.startswith('I '):
 
 	elif command.startswith('Q '):
-
+	    print("Quitting the program.")
+            break
 	else:
 
 
