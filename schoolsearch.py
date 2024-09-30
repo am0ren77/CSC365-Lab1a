@@ -37,7 +37,6 @@ def find_by_last_name(last_name):
     else:
         print("No students found with last name: " + last_name)
 
-
 # R5. S[tudent]: <lastname> B[us]
 def find_by_last_name_bus(last_name):
     results = [student for student in students if student[0] == last_name]
@@ -46,7 +45,6 @@ def find_by_last_name_bus(last_name):
 	    print(student[0] + " " + student[1] + " " + str(student[4]))
     else:
 	print("No students found with last name: " + last_name)
-
 
 # R6. T[eacher]: <lastname>
 def find_by_tlast_name(tlast_name):
@@ -57,7 +55,6 @@ def find_by_tlast_name(tlast_name):
     else:
 	print("No students found for teacher with last name: " + tlast_name)
 
-
 # R7. G[rade]: <Number>
 def find_by_grade(grade):
     results = [student for student in students if student[2] == grade]
@@ -67,7 +64,6 @@ def find_by_grade(grade):
     else:
         print("No students found in grade.")
 
-
 # R8. B[us]: <Number>
 def find_by_bus(bus_route):
     results = [student for student in students if student[4] == bus_route]
@@ -76,7 +72,6 @@ def find_by_bus(bus_route):
             print(student[0] + " " + student[1] + " " + str(student[2]) + " " + str(student[3]))
     else:
         print("No students found for bus route.")
-
 
 # R9a. G[rade]: <Number> H[igh]
 def find_highest_gpa_in_grade(grade):
@@ -102,7 +97,6 @@ def find_lowest_gpa_in_grade(grade):
 	      str(lowest_gpa_student[6]) + " " +
               str(lowest_gpa_student[4]))
 
-
 # R10. A[verage]: <Number>
 def avg_gpa_score(grade):
     results = [student for student in students if student[2] == grade]
@@ -110,7 +104,6 @@ def avg_gpa_score(grade):
 	total_gpa = sum(student[5] for student in results)
 	average_gpa = total_gpa / len(results)
 	print(str(grade) + " " + str(round(average_gpa, 2)))
-
 
 # R11. I[nfo]
 def student_info():
@@ -122,7 +115,7 @@ def student_info():
     for grade in sorted(grade_counts):
 	print(str(grade) + ": " + str(grade_counts[grade]) + " students")
 
-
+# Main loop to handle user input
 def main():
     filename = "students.txt"
     read_students(filename)
@@ -176,6 +169,7 @@ def main():
 
 	elif command.startswith('I'):
 	  student_info()
+
 
 if __name__ == "__main__":
     main()
