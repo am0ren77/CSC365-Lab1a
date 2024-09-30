@@ -28,11 +28,12 @@ def find_by_last_name(last_name):
     results = [student for student in students if student[0] == last_name]
     if results:
         for student in results:
-	    print(student[0] + " " +
-                  student[1] + " " +
-                  student[2] + " " +
-                  student[3] + " " +
-                  student[7] + " " + student[6]
+	    print(str(student[0]) + " " +
+                  str(student[1]) + " " +
+                  str(student[2]) + " " +
+                  str(student[3]) + " " +
+                  str(student[6]) + " " +
+		  str(student[7])
                 )
 
 # R5. S[tudent]: <lastname> B[us]
