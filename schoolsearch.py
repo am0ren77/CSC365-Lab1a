@@ -4,7 +4,6 @@
 
 
 # Function to read students.txt file and store data in list of dictionaries
-
 def read_students(filename):
     students = []
     with open(filename, 'r') as file:
@@ -28,8 +27,23 @@ def read_students(filename):
 
     return students
 
-# Main loop to handle user input
 
+# R4. S[tudent]: <lastname>
+# Function to search for a student by last name and print the required details
+def find_by_last_name(students, last_name):
+    result = [student for student in students if student['StLastName'] == last_name]
+
+    if not result:
+        return f"No students found with last name: {last_name}"
+    else:
+	return '\n'.join([
+            f"{student['StLastName']}, {student['StFirstName']}, Grade: {student['Grade']}, Classroom: {student['Classroom']}, Teacher: {student['TLastName']} {student['TFirstName']}"
+            for student in result
+        ])
+
+
+
+# Main loop to handle user input
 def main():
     filename = "students.txt"
     students = read_students(filename)
@@ -40,6 +54,15 @@ def main():
 # R3: search commands
 
 	if command.startswith('S '):
+	   parts = command.split()
+            if len(parts) == 2:
+                last_name = parts[1]
+                result = find_by_last_name(students, last_name)
+            else:
+                result = "Invalid S command."
+            print(result)	   
+
+
 
 	elif command.startswith('T '):
 
