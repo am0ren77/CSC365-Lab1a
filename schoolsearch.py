@@ -2,8 +2,6 @@
 # Lab 1 Part a
 # schoolsearch.py
 
-
-
 students = list()
 
 # Function to read students.txt file and store student data
@@ -26,39 +24,38 @@ def read_students(filename):
 	    ]
 	    students.append(student_info)
 
-
 # R4. S[tudent]: <lastname>
 # Function to search for a student by last name and print the required details
-def find_by_last_name(students, last_name):
+def find_by_last_name(last_name):
     results = [student for student in students if student[0] == last_name]
-    
     if results:
         for student in results:
-            print("Student Last Name: {}, First Name: {}".format(student[0], student[1]))
-            print("Grade: {}, Classroom: {}".format(student[2], student[3]))
-            print("Teacher: {} {}\n".format(student[6], student[7]))
+	    print({
+                    'last_name': student[0],
+                    'first_name': student[1],
+                    'grade': student[2],
+                    'class_room': student[3],
+                    'teacher': student[7] + " " + student[6]
+                })
     else:
-        print("No student found with the last name: {}".format(last_name))
+        print("No students found with last name: " + last_name)
 
 # Main loop to handle user input
 def main():
     filename = "students.txt"
     read_students(filename)
 
+
     while True:
-        command = input("Enter a command: ")
-        
-        if command.startswith("S"):
-            input_student_name = input("Enter the student's last name: ").strip()
-            find_by_last_name(students, input_student_name)
-        
-        elif command == 'q':  # Add an option to quit the loop
-            print("Exiting the program.")
+	command = input("Enter command: ")
+	
+	if command.startswith('Q'):
+            print("Quitting program.")
             break
-        
-        else:
-            print("Invalid command. Please use 'S' or 'Q'.")
+
+
 
 
 if __name__ == "__main__":
     main()
+
