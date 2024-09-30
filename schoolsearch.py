@@ -140,9 +140,9 @@ def main():
 	       	   find_by_grade(grade)
 		elif len(parts) > 2:
                    option = parts[2]
-                   if option == 'H':
+                   if option.startswith('H'):
                       find_highest_gpa_in_grade(grade)
-                   elif option == 'L':
+                   elif option.startswith('L'):
                       find_lowest_gpa_in_grade(grade)
 		   else:
 		      print("Unknown option.")
