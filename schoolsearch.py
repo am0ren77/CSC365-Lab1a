@@ -25,3 +25,39 @@ def read_students(filename):
                 'TFirstName': parts[7]
 	    }
 	    students.append(student)
+
+    return students
+
+# Main loop to handle user input
+
+def main():
+    filename = "students.txt"
+    students = read_students(filename)
+
+    while True:
+        command = input("Enter command: ").strip()
+
+# R3: search commands
+
+	if command.startswith('S '):
+
+	elif command.startswith('T '):
+
+	elif command.startswith('B '):	
+
+	elif command.startswith('G '):
+
+	elif command.startswith('A '):
+
+	elif command.startswith('I '):
+
+	elif command.startswith('Q '):
+
+	else:
+
+
+
+
+
+if __name__ == "__main__":
+    main()
