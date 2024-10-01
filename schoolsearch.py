@@ -1,4 +1,4 @@
-# Ashley Moreino
+# Ashley Moreno
 # Lab 1 Part a
 # schoolsearch.py
 import sys
